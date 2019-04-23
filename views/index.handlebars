@@ -1,0 +1,25 @@
+<h1>Meat Muncher!</h1>
+
+<ul>
+    {{#each burgers}}
+    <li>
+        <p>
+            {{this.id}}. {{this.burger_name}}
+
+            <button data-burgersid="{{this.id}}" class="delburger">Eat Meat!</button>
+        </p>
+
+    </li>
+    {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form action="/index" method="POST">
+
+  <div class="form-group">
+    <label>Burger Name:</label>
+    <input type="text" name="name">
+  </div>
+  <button type="submit">Add Burger</button>
+</form>
+
