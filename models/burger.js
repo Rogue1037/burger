@@ -7,12 +7,11 @@ var burger = {
     });
   },
 
-  create: function (table , column, values, cb) {
-		orm.create( table,column, values, function (res) {
-			cb(res);
-			console.log("orm model CREATE is working");
-		});
-	},
+  insertOne: function(burger_name, response){
+    orm.insertOne(burger_name, function(data){
+      response(data);
+    });
+  },
 
 };
 module.exports = burger;

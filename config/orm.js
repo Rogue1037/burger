@@ -1,7 +1,6 @@
 var connection = require("./connection");
 
 
-
 var orm = {
     selectAll: function (tableInput, cb) {
         var queryString = "SELECT * FROM ?? ";
@@ -11,18 +10,13 @@ var orm = {
         });
     },
 
-    create: function (table,column,values,cb) {
-		var columnString = column.toString();
-		var valuesString = "'"+ values +"'";
-		var queryString = 'INSERT INTO ' + table + ' (' + columnString + ') ' + 'VALUES(' + "'" + valuesString + "'" + ');';
-		
-		
-
-		connection.query(queryString, values, function (err, result) {
-			if (err) throw err;
-			cb(result);
-		});
-	},
+    insertOne: function(burger, response) {
+      var queryString = "INSERT INTO burgers (burger_name, devoured) VALUES (?,?)";
+      connection.query(queryString, [burger, false], function(err, data) {
+        if (err) throw err;
+        response(data);
+      });
+    },
 
 
 
